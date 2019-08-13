@@ -21,11 +21,15 @@ import java.nio.file.Files;
 import java.util.Arrays;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.spring.initializr.generator.spring.build.gradle.DependencyManagementPluginVersionResolver;
+import io.spring.initializr.generator.spring.build.gradle.InitializrDependencyManagementPluginVersionResolver;
 import io.spring.initializr.generator.spring.code.kotlin.InitializrMetadataKotlinVersionResolver;
 import io.spring.initializr.generator.spring.code.kotlin.KotlinVersionResolver;
 import io.spring.initializr.metadata.InitializrMetadataProvider;
 import io.spring.initializr.versionresolver.DependencyManagementVersionResolver;
 import io.spring.initializr.web.support.InitializrMetadataUpdateStrategy;
+import io.spring.start.site.build.gradle.CompositeDependencyManagementPluginVersionResolver;
+import io.spring.start.site.build.gradle.ManagedDependenciesDependencyManagementPluginVersionResolver;
 import io.spring.start.site.extension.ProjectDescriptionCustomizerConfiguration;
 import io.spring.start.site.kotlin.CompositeKotlinVersionResolver;
 import io.spring.start.site.kotlin.ManagedDependenciesKotlinVersionResolver;
@@ -88,6 +92,14 @@ public class StartApplication {
 		return new CompositeKotlinVersionResolver(
 				Arrays.asList(new ManagedDependenciesKotlinVersionResolver(versionResolver),
 						new InitializrMetadataKotlinVersionResolver(metadataProvider)));
+	}
+
+	@Bean
+	public DependencyManagementPluginVersionResolver dependencyManagementPluginVersionResolver(
+			DependencyManagementVersionResolver versionResolver, InitializrMetadataProvider metadataProvider) {
+		return new CompositeDependencyManagementPluginVersionResolver(
+				Arrays.asList(new ManagedDependenciesDependencyManagementPluginVersionResolver(versionResolver),
+						new InitializrDependencyManagementPluginVersionResolver(metadataProvider)));
 	}
 
 }
