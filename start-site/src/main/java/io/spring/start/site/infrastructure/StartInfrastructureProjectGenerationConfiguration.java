@@ -17,6 +17,8 @@
 package io.spring.start.site.infrastructure;
 
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
+import io.spring.initializr.generator.spring.build.gradle.DependencyManagementPluginVersionResolver;
+import io.spring.initializr.generator.spring.build.gradle.InitializrDependencyManagementPluginVersionResolver;
 import io.spring.initializr.generator.spring.code.kotlin.InitializrMetadataKotlinVersionResolver;
 import io.spring.initializr.generator.spring.code.kotlin.KotlinVersionResolver;
 import io.spring.initializr.metadata.InitializrMetadata;
@@ -39,6 +41,14 @@ public class StartInfrastructureProjectGenerationConfiguration {
 		return new ManagedDependenciesKotlinVersionResolver(versionResolver,
 				(description) -> new InitializrMetadataKotlinVersionResolver(metadata)
 						.resolveKotlinVersion(description));
+	}
+
+	@Bean
+	public DependencyManagementPluginVersionResolver dependencyManagementPluginVersionResolver(
+			DependencyManagementVersionResolver versionResolver, InitializrMetadata metadata) {
+		return new ManagedDependenciesDependencyManagementPluginVersionResolver(versionResolver,
+				(description) -> new InitializrDependencyManagementPluginVersionResolver(metadata)
+						.resolveDependencyManagementPluginVersion(description));
 	}
 
 }
