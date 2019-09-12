@@ -105,6 +105,13 @@ initializr:
             version: 2.0.3.RELEASE
           - compatibilityRange: "2.1.0.RELEASE"
             version: 2.1.4.RELEASE
+      spring-data-r2dbc:
+        groupId: org.springframework.boot.experimental
+        artifactId: spring-boot-bom-r2dbc
+        mappings:
+          - compatibilityRange: "2.0.0.M6"
+            version: 0.1.0.BUILD-SNAPSHOT
+            repositories: spring-snapshots,spring-milestones
       spring-statemachine:
         groupId: org.springframework.statemachine
         artifactId: spring-statemachine-bom
@@ -388,6 +395,24 @@ initializr:
               description: Using Spring Data JDBC
             - rel: reference
               href: https://docs.spring.io/spring-data/jdbc/docs/current/reference/html/
+        - name: Spring Data R2DBC [Experimental]
+          id: data-r2dbc
+          compatibilityRange: "2.2.0.M6"
+          groupId: org.springframework.boot.experimental
+          artifactId: spring-boot-starter-data-r2dbc
+          bom: spring-data-r2dbc
+          description: Persist data in SQL stores with plain JDBC using Spring Data in reactive applications.
+          facets:
+            - reactive
+          links:
+            - rel: guide
+              href: https://github.com/spring-projects-experimental/spring-boot-r2dbc/tree/master/spring-boot-example-h2
+              description: R2DBC example
+            - rel: reference
+              href: https://docs.spring.io/spring-data/r2dbc/docs/1.0.x/reference/html/#reference
+            - rel: home
+              href: https://r2dbc.io
+              description: R2DBC Homepage
         - name: MySQL Driver
           id: mysql
           description: MySQL JDBC driver.
