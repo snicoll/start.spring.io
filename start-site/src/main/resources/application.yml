@@ -401,7 +401,7 @@ initializr:
           groupId: org.springframework.boot.experimental
           artifactId: spring-boot-starter-data-r2dbc
           bom: spring-data-r2dbc
-          description: Persist data in SQL stores with plain JDBC using Spring Data in reactive applications.
+          description: Provides Reactive Relational Database Connectivity to persist data in SQL stores using Spring Data in reactive applications.
           facets:
             - reactive
           links:
@@ -415,7 +415,7 @@ initializr:
               description: R2DBC Homepage
         - name: MySQL Driver
           id: mysql
-          description: MySQL JDBC driver.
+          description: MySQL JDBC and R2DBC driver.
           groupId: mysql
           artifactId: mysql-connector-java
           scope: runtime
@@ -426,7 +426,7 @@ initializr:
               description: Accessing data with MySQL
         - name: H2 Database
           id: h2
-          description: Provides a fast in-memory database that supports JDBC API, with a small (2mb) footprint. Supports embedded and server modes as well as a browser based console application.
+          description: Provides a fast in-memory database that supports JDBC API and R2DBC access, with a small (2mb) footprint. Supports embedded and server modes as well as a browser based console application.
           groupId: com.h2database
           artifactId: h2
           scope: runtime
@@ -461,14 +461,14 @@ initializr:
               version: 2.1.0
         - name: PostgreSQL Driver
           id: postgresql
-          description: An open source JDBC driver that allows Java programs to connect to a PostgreSQL database using standard, database independent Java code.
+          description: An open source JDBC and R2DBC driver that allows Java programs to connect to a PostgreSQL database using standard, database independent Java code.
           groupId: org.postgresql
           artifactId: postgresql
           scope: runtime
           starter: false
         - name: MS SQL Server Driver
           id: sqlserver
-          description: A Type 4 JDBC driver that provides access to Microsoft SQL Server and Azure SQL Database from any Java application.
+          description: A Type 4 JDBC and R2DBC driver that provides access to Microsoft SQL Server and Azure SQL Database from any Java application.
           groupId: com.microsoft.sqlserver
           artifactId: mssql-jdbc
           scope: runtime
