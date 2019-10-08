@@ -24,6 +24,7 @@ import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.generator.spring.build.gradle.ConditionalOnGradleVersion;
 import io.spring.initializr.metadata.InitializrMetadata;
 import io.spring.start.site.extension.dependency.flyway.FlywayProjectContributor;
+import io.spring.start.site.extension.dependency.geode.GeodeHelpDocumentCustomizer;
 import io.spring.start.site.extension.dependency.liquibase.LiquibaseProjectContributor;
 import io.spring.start.site.extension.dependency.lombok.LombokGradleBuildCustomizer;
 import io.spring.start.site.extension.dependency.reactor.ReactorTestBuildCustomizer;
@@ -100,6 +101,12 @@ public class DependencyProjectGenerationConfiguration {
 	@ConditionalOnRequestedDependency("liquibase")
 	public LiquibaseProjectContributor liquibaseProjectContributor() {
 		return new LiquibaseProjectContributor();
+	}
+
+	@Bean
+	@ConditionalOnRequestedDependency("geode")
+	public GeodeHelpDocumentCustomizer geodeHelpDocumentCustomizer() {
+		return new GeodeHelpDocumentCustomizer(this.metadata, this.description);
 	}
 
 }
