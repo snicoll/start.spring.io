@@ -1076,13 +1076,13 @@ initializr:
           groupId: org.springframework.cloud
           artifactId: spring-cloud-stream-reactive
     - name: Pivotal Cloud Foundry
-      bom: spring-cloud-services
       content:
         - name: Config Client (PCF)
           id: scs-config-client
           description: Config client on Pivotal Cloud Foundry
           groupId: io.pivotal.spring.cloud
           artifactId: spring-cloud-services-starter-config-client
+          bom: spring-cloud-services
           starter: false
           links:
             - rel: reference
@@ -1092,6 +1092,7 @@ initializr:
           description: Eureka service discovery client on Pivotal Cloud Foundry
           groupId: io.pivotal.spring.cloud
           artifactId: spring-cloud-services-starter-service-registry
+          bom: spring-cloud-services
           links:
             - rel: reference
               href: https://docs.pivotal.io/spring-cloud-services/
@@ -1100,9 +1101,27 @@ initializr:
           description: Hystrix circuit breaker client on Pivotal Cloud Foundry
           groupId: io.pivotal.spring.cloud
           artifactId: spring-cloud-services-starter-circuit-breaker
+          bom: spring-cloud-services
           links:
             - rel: reference
               href: https://docs.pivotal.io/spring-cloud-services/
+        - name: Pivotal Cloud Cache
+          id: pivotal-cloud-cache
+          description: High-performance caching for Spring microservices
+          compatibilityRange: 2.2.0.M5
+          groupId: org.springframework.geode
+          artifactId: spring-gemfire-starter
+          version: 1.2.0.RC1
+          repository: spring-milestones
+          links:
+            - rel: reference
+              href: https://pivotal.io/pivotal-cloud-cache
+              description: Pivotal Cloud Cache Website
+            - rel: reference
+              href: https://docs.pivotal.io/p-cloud-cache/
+            - rel: guide
+              href: https://docs.pivotal.io/p-cloud-cache/SBapp1.html
+              description: Pivotal Cloud Cache Example Application
     - name: Amazon Web Services
       bom: spring-cloud
       content:
