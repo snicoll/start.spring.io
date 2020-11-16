@@ -39,7 +39,8 @@ GA version by default.
 Click on "Generate", this downloads a zip file containing a Maven project with the
 following structure:
 
-```
+[source]
+----
 .gitignore
 HELP.md
 mvnw
@@ -60,7 +61,7 @@ src
         └── org
             └── acme
                 └── DemoApplicationTests.java
-```
+----
 
 A typical project contains a Spring Boot application (`DemoApplication`), a test and an
 empty configuration. If you run the `main` method of `DemoApplication`, you'll see an
@@ -204,7 +205,7 @@ installed invoke the following:
 	$ curl https://start.spring.io
 ----
 
-Alternatively, if you prefer `HTTPie` you can discover the available options as follows:
+Alternatively, if you prefer `HTTPie`, you can discover the available options as follows:
 
 
 [indent=0]
@@ -239,10 +240,11 @@ Let's assume that you want to generate a "my-project.zip" project based on Sprin
 `2.3.5.RELEASE`, using the `web` and `devtools` dependencies (remember, those two ids are
 displayed in the capabilities of the service):
 
-```
+[source]
+----
 $ curl https://start.spring.io/starter.zip -d dependencies=web,devtools \
            -d bootVersion=2.3.5.RELEASE -o my-project.zip
-```
+----
 
 If you extract `my-project.zip`, you'll notice a few differences compared to what happens
 with the web UI:
@@ -254,10 +256,11 @@ name of the project)
 
 The exact same project can be generated using the `http` command as well:
 
-```
+[source]
+----
 $ http https://start.spring.io/starter.zip dependencies==web,devtools \
            bootVersion==2.3.5.RELEASE -d
-```
+----
 
 NOTE: `HTTPie` reads the same hint as the browser so it will store a `demo.zip` file in
 the current directory, with the same differences discussed above.
