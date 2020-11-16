@@ -113,18 +113,20 @@ If you search for a dependency that you know to be available and you get a disab
 panel, it indicates that you cannot use it with the currently selected Spring Boot
 version:
 
-```
+[source]
+----
 Requires Spring Boot >=2.0.0.RELEASE and <2.3.0.RELEASE
-```
+----
 
 Concretely, this defines a "version range" that states the dependency is deprecated and is
 no longer available as of Spring Boot 2.3. You may want to check the release notes of the
 related project to understand what your migration path can be. Alternatively, the message
 could be:
 
-```
+[source]
+----
 Requires Spring Boot >=2.4.0
-```
+----
 
 That version range means the dependency is not available with the selected Spring Boot
 generation. If you select Spring Boot 2.4 (or later if available), you'll be
@@ -148,9 +150,10 @@ The link contains all settings that are available on start.spring.io. You can sh
 by removing any attribute that you don't want to enforce. For instance, here is a link
 that only changes the `groupId`:
 
-```
+[source]
+----
 https://start.spring.io/#!groupId=org.acme.test
-```
+----
 
 If you copy/paste the link above in your browser, you'll end up on start.spring.io with
 the usual UI except that the `Group` field is not equal to the usual `com.example`
@@ -193,9 +196,21 @@ Check {spring-boot-docs}/spring-boot-cli.html#cli-init[the documentation for mor
 [[command-line]]
 == Command line support
 You can also generate a project in a shell using `cURL` or `HTTPie`. To discover the
-available options of a particular instance, simply "curl it", i.e. if you have `curl`
-installed invoke `curl https://start.spring.io` on the command-line (or, alternatively,
-`http https://start.spring.io` if you prefer to use `HTTPie`).
+available options of a particular instance, simply "curl it". If you have `curl`
+installed invoke the following:
+
+[indent=0]
+----
+	$ curl https://start.spring.io
+----
+
+Alternatively, if you prefer `HTTPie` you can discover the available options as follows:
+
+
+[indent=0]
+----
+	$ http https://start.spring.io
+----
 
 The result is a textual representation of the capabilities of the service that are split
 in three sections:
