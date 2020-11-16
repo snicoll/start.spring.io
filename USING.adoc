@@ -2,7 +2,7 @@
 = User Guide
 
 If you're wondering how to use https://start.spring.io or what features are available,
-this section is for you! You'll find the various ways you can interact with the service
+this page is for you! You'll find the various ways you can interact with the service
 and get a better insight at what you can do with it.
 
 The service allows you to generate Spring Boot projects quickly. You can customize the
@@ -36,11 +36,12 @@ NOTE: The Spring Boot version above probably doesn't match the one you have. The
 is continuously updated as new Spring Boot versions are published and it uses the latest
 GA version by default.
 
-Click on `Generate Project`, this downloads a zip file containing a Maven project with
-the following structure:
+Click on "Generate", this downloads a zip file containing a Maven project with the
+following structure:
 
 ```
 .gitignore
+HELP.md
 mvnw
 mvnw.cmd
 pom.xml
@@ -64,6 +65,9 @@ src
 A typical project contains a Spring Boot application (`DemoApplication`), a test and an
 empty configuration. If you run the `main` method of `DemoApplication`, you'll see an
 "empty" spring boot app starting on `localhost:8080`.
+
+Based on your selection, a `HELP.md` document contains links to documentation and
+samples you can use to learn more about the dependencies you have selected.
 
 Because the conventions have detected it is a web application, the `static` and
 `templates` directories have been created to hold your static resources and UI templates.
@@ -107,7 +111,7 @@ aren't anymore when you change the version.
 
 If you search for a dependency that you know to be available and you get a disabled
 panel, it indicates that you cannot use it with the currently selected Spring Boot
-version;
+version:
 
 ```
 Requires Spring Boot >=2.0.0.RELEASE and <2.3.0.RELEASE
@@ -149,7 +153,7 @@ https://start.spring.io/#!groupId=org.acme.test
 ```
 
 If you copy/paste the link above in your browser, you'll end up on start.spring.io with
-the usual screen except that the `Group` field is not equal to the usual `com.example`
+the usual UI except that the `Group` field is not equal to the usual `com.example`
 default.
 
 NOTE: Any value that is not specified in the link will use whatever default is applicable
@@ -170,7 +174,7 @@ The following IDEs have dedicated support:
 
 * Eclipse/STS
 * IntelliJ IDEA (Ultimate Edition)
-* NetBeans (using the https://plugins.netbeans.org/plugin/67888/nb-springboot[NB SpringBoot plugin])
+* NetBeans, using the https://plugins.netbeans.org/plugin/67888/nb-springboot[NB SpringBoot plugin])
 * Microsoft VSCode, using the https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-initializr[Spring Initializr Java Support].
 
 Refer to the documentation of your favorite IDE for more details.
@@ -180,7 +184,7 @@ Refer to the documentation of your favorite IDE for more details.
 [[spring-boot-cli]]
 == Spring Boot CLI support
 The `spring` command line tool defines an `init` command that allows you to create a
-project using Spring Initializr.
+project using Spring Initializr. It defaults to start.spring.io.
 
 Check {spring-boot-docs}/spring-boot-cli.html#cli-init[the documentation for more details].
 
