@@ -1,0 +1,12 @@
+## Spring Native
+
+This project has been configured to let you generate a lightweight container running a native executable.
+Docker should be installed and configured on your machine prior to creating the image, see [the prerequisites section of the reference guide](https://docs.spring.io/spring-native/docs/{{version}}/reference/#_prerequisites).
+
+To create the image, run the following goal:
+
+```
+$ {{buildImageCommand}}
+```
+
+Your IDE should also be configured to run the AOT plugin at the appropriate time, check [the reference documentation](https://docs.spring.io/spring-native/docs/{{version}}/reference/#spring-aot) for more details.
