@@ -16,6 +16,9 @@
 
 package io.spring.start.site.extension.dependency.springnative;
 
+import java.util.Map;
+import java.util.function.Supplier;
+
 import io.spring.initializr.generator.buildsystem.Build;
 import io.spring.initializr.generator.buildsystem.MavenRepository;
 import io.spring.initializr.generator.buildsystem.gradle.GradleBuildSystem;
@@ -26,9 +29,11 @@ import io.spring.initializr.generator.io.template.MustacheTemplateRenderer;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 import io.spring.initializr.generator.version.Version;
+import io.spring.initializr.generator.version.VersionReference;
 import io.spring.initializr.metadata.Dependency;
 import io.spring.initializr.metadata.InitializrMetadata;
 import io.spring.initializr.metadata.Repository;
+import io.spring.initializr.versionresolver.DependencyManagementVersionResolver;
 
 import org.springframework.context.annotation.Bean;
 
@@ -63,8 +68,24 @@ class SpringNativeProjectGenerationConfiguration {
 
 	@Bean
 	@ConditionalOnBuildSystem(GradleBuildSystem.ID)
-	SpringNativeGradleBuildCustomizer springNativeGradleBuildCustomizer() {
-		return new SpringNativeGradleBuildCustomizer();
+	SpringNativeGradleBuildCustomizer springNativeGradleBuildCustomizer(ProjectDescription description,
+			DependencyManagementVersionResolver versionResolver) {
+		return new SpringNativeGradleBuildCustomizer(
+				determineHibernateVersion(versionResolver, description.getPlatformVersion()));
+	}
+
+	private static Supplier<VersionReference> determineHibernateVersion(
+			DependencyManagementVersionResolver versionResolver, Version springBootVersion) {
+		return () -> {
+			Map<String, String> resolve = versionResolver.resolve("org.springframework.boot",
+					"spring-boot-dependencies", springBootVersion.toString());
+			String hibernateVersion = resolve.get("org.hibernate:hibernate-core");
+			if (hibernateVersion == null) {
+				throw new IllegalStateException(
+						"Failed to determine Hibernate version for Spring Boot " + springBootVersion);
+			}
+			return VersionReference.ofValue(hibernateVersion);
+		};
 	}
 
 	private static MavenRepository determineNativeMavenRepository(InitializrMetadata metadata,

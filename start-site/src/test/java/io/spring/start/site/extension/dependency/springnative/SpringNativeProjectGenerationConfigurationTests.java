@@ -118,6 +118,26 @@ class SpringNativeProjectGenerationConfigurationTests extends AbstractExtensionT
 	}
 
 	@Test
+	void gradleBuildWithoutJpaDoesNotConfigureHibernateEnhancePlugin() {
+		assertThat(gradleBuild(createProjectRequest("native"))).doesNotContain("org.hibernate.orm");
+	}
+
+	@Test
+	void gradleBuildWithJpaConfigureHibernateEnhancePlugin() {
+		assertThat(gradleBuild(createProjectRequest("native", "data-jpa"))).hasPlugin("org.hibernate.orm").lines()
+				.containsSequence(// @formatter:off
+				"hibernate {",
+				"	enhance {",
+				"		enableLazyInitialization = true",
+				"		enableDirtyTracking = true",
+				"		enableAssociationManagement = true",
+				"		enableExtendedEnhancement = false",
+				"	}",
+				"}" // @formatter:on
+				);
+	}
+
+	@Test
 	void mavenBuildConfigureSpringBootPlugin() {
 		assertThat(mavenPom(createProjectRequest("native"))).lines().containsSequence(
 		// @formatter:off
@@ -137,12 +157,12 @@ class SpringNativeProjectGenerationConfigurationTests extends AbstractExtensionT
 	}
 
 	@Test
-	void mavenBuildWithoutJavaDoesNotConfigureHibernateEnhancePlugin() {
+	void mavenBuildWithoutJpaDoesNotConfigureHibernateEnhancePlugin() {
 		assertThat(mavenPom(createProjectRequest("native"))).doesNotContain("hibernate-enhance-maven-plugin");
 	}
 
 	@Test
-	void mavenBuildWithJavaConfigureHibernateEnhancePlugin() {
+	void mavenBuildWithJpaConfigureHibernateEnhancePlugin() {
 		assertThat(mavenPom(createProjectRequest("native", "data-jpa"))).lines().containsSequence(
 		// @formatter:off
 				"			<plugin>",
