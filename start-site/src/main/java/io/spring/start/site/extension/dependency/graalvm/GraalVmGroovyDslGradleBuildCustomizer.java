@@ -16,8 +16,11 @@
 
 package io.spring.start.site.extension.dependency.graalvm;
 
+import java.util.function.Supplier;
+
 import io.spring.initializr.generator.buildsystem.gradle.GradleBuild;
 import io.spring.initializr.generator.version.Version;
+import io.spring.initializr.generator.version.VersionReference;
 
 /**
  * {@link GraalVmGradleBuildCustomizer} implementations for projects using the Groovy DSL.
@@ -26,8 +29,8 @@ import io.spring.initializr.generator.version.Version;
  */
 class GraalVmGroovyDslGradleBuildCustomizer extends GraalVmGradleBuildCustomizer {
 
-	GraalVmGroovyDslGradleBuildCustomizer(Version platformVersion) {
-		super(platformVersion);
+	GraalVmGroovyDslGradleBuildCustomizer(Version platformVersion, Supplier<VersionReference> hibernateVersion) {
+		super(platformVersion, hibernateVersion);
 	}
 
 	@Override
