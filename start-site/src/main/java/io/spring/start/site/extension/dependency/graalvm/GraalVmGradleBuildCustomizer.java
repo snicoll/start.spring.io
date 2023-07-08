@@ -29,8 +29,8 @@ class GraalVmGradleBuildCustomizer implements BuildCustomizer<GradleBuild> {
 
 	private final String nbtVersion;
 
-	protected GraalVmGradleBuildCustomizer(Version platformVersion) {
-		this.nbtVersion = NativeBuildtoolsVersionResolver.resolve(platformVersion);
+	protected GraalVmGradleBuildCustomizer(String nbtVersion) {
+		this.nbtVersion = nbtVersion;
 	}
 
 	@Override

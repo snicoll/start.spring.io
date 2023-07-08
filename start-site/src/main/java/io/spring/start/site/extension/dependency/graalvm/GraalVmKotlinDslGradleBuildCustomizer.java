@@ -25,8 +25,8 @@ import io.spring.initializr.generator.version.Version;
  */
 class GraalVmKotlinDslGradleBuildCustomizer extends GraalVmGradleBuildCustomizer {
 
-	GraalVmKotlinDslGradleBuildCustomizer(Version platformVersion) {
-		super(platformVersion);
+	GraalVmKotlinDslGradleBuildCustomizer(String nbtVersion) {
+		super(nbtVersion);
 	}
 
 }
